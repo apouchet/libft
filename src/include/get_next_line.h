@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 16:14:25 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/29 16:14:26 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+# include "../../libft.h"
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
+# define BUFF_SIZE 50
+
+int		get_next_line(int fd, char **line);
 
 #endif

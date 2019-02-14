@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:12:19 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/27 17:12:20 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "mem.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+{
+	unsigned char		*a;
+	const unsigned char	*b;
+	size_t				i;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	a = (unsigned char*)dst;
+	b = (const unsigned char*)src;
+	i = 0;
+	while (i++ < n)
+		a[i - 1] = b[i - 1];
+	return (dst);
+}

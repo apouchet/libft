@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_unicode_len.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 14:10:09 by apouchet          #+#    #+#             */
+/*   Updated: 2019/02/14 17:58:01 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "else.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+size_t	ft_unicode_len(int c)
+{
+	size_t octet;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	octet = 1;
+	if (c > 127)
+		octet++;
+	if (c > 2047)
+		octet++;
+	if (c > 65535)
+		octet++;
+	if (c > 2097151)
+		octet++;
+	if (octet == 0)
+		octet = 1;
+	return (octet);
+}

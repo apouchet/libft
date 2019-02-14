@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:09:33 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/27 17:09:35 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "is.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+int		ft_isspace(char c)
+{
+	if (c == '\t' || c == ' ' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r')
+		return (1);
+	return (0);
+}

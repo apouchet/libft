@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 14:15:45 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/29 14:15:49 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "lst.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+void	ft_list_push_front(t_list **begin_list, void *data, size_t len)
+{
+	t_list *tmp;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	if (*begin_list)
+	{
+		tmp = ft_lstnew(data, len);
+		tmp->next = *begin_list;
+		*begin_list = tmp;
+	}
+	else
+		*begin_list = ft_lstnew(data, len);
+}

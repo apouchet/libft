@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 15:16:24 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/29 15:16:27 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "str.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+char	*ft_strndup(const char *s1, size_t n)
+{
+	char *a;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	if (n > ft_strlen(s1))
+		n = ft_strlen(s1);
+	if (!(a = (char*)ft_memalloc(sizeof(char) * (n + 1))))
+		return (NULL);
+	a = ft_strncpy(a, s1, n);
+	return (a);
+}

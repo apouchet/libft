@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:18:15 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/29 15:15:07 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "str.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+int		ft_strcmp(const char *s1, const char *s2)
+{
+	const unsigned char	*a;
+	const unsigned char	*b;
+	size_t				i;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	a = (const unsigned char*)s1;
+	b = (const unsigned char*)s2;
+	i = 0;
+	while (a[i] && b[i] && a[i] == b[i])
+		i++;
+	return (a[i] - b[i]);
+}

@@ -6,7 +6,7 @@
 #    By: apouchet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/21 15:42:31 by apouchet          #+#    #+#              #
-#    Updated: 2019/02/14 17:58:54 by apouchet         ###   ########.fr        #
+#    Updated: 2019/02/14 18:44:05 by apouchet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,9 @@ CFLAGS = -Weverything -Wall -Werror -Wextra
 # CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
+
+INC = src/include
+
 SRC_ELSE = $(wildcard src/else/*.c)
 SRC_IS = $(wildcard src/is/*.c)
 SRC_MEM = $(wildcard src/mem/*.c)
@@ -46,7 +49,7 @@ $(NAME) : $(OBJ_ELSE) $(OBJ_IS) $(OBJ_MEM) $(OBJ_PUT) $(OBJ_STR) $(OBJ_LST) $(OB
 	@echo "Creation libft.a"
 
 %.o: %.c
-	@$(CC) -o $@ -c $< $(CFLAGS)
+	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC)
 	@printf "\033[1;32m+\033[0m"
 
 clean :

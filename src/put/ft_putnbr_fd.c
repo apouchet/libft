@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:13:50 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/27 17:13:54 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "put.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+void	ft_putnbr_fd(int nb, int fd)
+{
+	long int a;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	a = (long)nb;
+	if (nb < 0)
+	{
+		ft_putchar_fd('-', fd);
+		a = -a;
+	}
+	if (a < 10)
+		ft_putchar_fd('0' + (int)a, fd);
+	if (a >= 10)
+	{
+		ft_putnbr_fd((int)(a / 10), fd);
+		ft_putchar_fd('0' + (int)(a % 10), fd);
+	}
+}

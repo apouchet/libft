@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strnbstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 14:34:24 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/29 15:16:09 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "str.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+size_t	ft_strnbstr(const char *s1, const char *s)
+{
+	size_t	i;
+	size_t	len;
+	size_t	nb;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	i = 0;
+	nb = 0;
+	if (!*s)
+		return (0);
+	len = ft_strlen(s);
+	while (s1[i])
+	{
+		if (s1[i] == *s)
+			if (ft_strncmp(&s1[i], s, len) == 0)
+				nb++;
+		i++;
+	}
+	return (nb);
+}

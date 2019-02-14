@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:12:29 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/27 17:12:31 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "mem.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+static void	*ft_rev(void *dest, const void *src, size_t n)
+{
+	unsigned char		*a;
+	const unsigned char *b;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
+	a = (unsigned char*)dest;
+	b = (const unsigned char*)src;
+	while (n--)
+		a[n] = b[n];
+	return (a);
+}
 
-#endif
+void		*ft_memmove(void *dest, const void *src, size_t n)
+{
+	if (dest > src)
+		dest = ft_rev(dest, src, n);
+	if (dest < src)
+		dest = ft_memcpy(dest, src, n);
+	return (dest);
+}

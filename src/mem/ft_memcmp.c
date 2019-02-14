@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:12:14 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/27 17:12:17 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "mem.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	const unsigned char	*a;
+	const unsigned char	*b;
+	size_t				i;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	a = (const unsigned char*)s1;
+	b = (const unsigned char*)s2;
+	i = 0;
+	while (i < n && a[i] == b[i])
+		i++;
+	return (i != n ? a[i] - b[i] : 0);
+}

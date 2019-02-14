@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strsub_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 15:23:24 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/29 15:23:25 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "str.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+char	*ft_strsub_free(char **s, size_t start, size_t len)
+{
+	size_t	i;
+	char	*a;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	if (!s || !(*s) || start + len > ft_strlen(*s) ||
+		!(a = (char*)ft_memalloc(len + 1)))
+		return (NULL);
+	i = 0;
+	while (*s[start] && i < len)
+		a[i++] = *s[start++];
+	ft_strdel(s);
+	return (a);
+}

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 14:16:22 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/29 14:16:29 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "lst.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+t_list	*ft_lstnew(void const *content, size_t content_size)
+{
+	t_list *list;
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
-
-#endif
+	if (!(list = (t_list*)ft_memalloc(sizeof(t_list))))
+		return (NULL);
+	list->next = NULL;
+	if (content && content_size)
+	{
+		list->content = ft_memdup(content, content_size);
+		list->content_size = content_size;
+	}
+	else
+	{
+		list->content = NULL;
+		list->content_size = 0;
+	}
+	return (list);
+}

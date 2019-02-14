@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   is.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:15:02 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/27 17:15:04 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef IS_H
+# define IS_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+# include "../../libft.h"
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
+int		ft_isalpha(int c);
+
+int		ft_isspace(char c);
+
+int		ft_isprint(int c);
+
+int		ft_isalnum(int	c);
+
+int		ft_isdigit(int	c);
+
+int		ft_isascii(int	c);
+
+int		ft_islower(int	c);
+
+int		ft_isupper(int	c);
+
+int		ft_ischar(const char *s, char c);
 
 #endif

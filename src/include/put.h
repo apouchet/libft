@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   put.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/14 18:46:34 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/27 17:14:02 by apouchet          #+#    #+#             */
+/*   Updated: 2018/11/27 17:15:19 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef PUT_H
+# define PUT_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+# include "../../libft.h"
 
-# include "src/include/is.h"
-# include "src/include/else.h"
-# include "src/include/mem.h"
-# include "src/include/put.h"
-# include "src/include/str.h"
-# include "src/include/lst.h"
-# include "src/include/get_next_line.h"
-# include "src/include/ft_printf.h"
+void	ft_putchar(int c);
+
+void	ft_putchar_fd(int c, int fd);
+
+void	ft_putstr(char const *s);
+
+void	ft_putstr_fd(char const *s, int fd);
+
+void	ft_putendl_fd(char const *s, int fd);
+
+void	ft_putendl(char const *s);
+
+void	ft_putnbr(int n);
+
+void	ft_putnbr_fd(int n, int fd);
 
 #endif
