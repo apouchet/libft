@@ -5,65 +5,70 @@
 #                                                     +:+ +:+         +:+      #
 #    By: apouchet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/11/07 05:07:37 by apouchet          #+#    #+#              #
-#    Updated: 2016/11/22 18:30:23 by apouchet         ###   ########.fr        #
+#    Created: 2017/08/21 15:42:31 by apouchet          #+#    #+#              #
+#    Updated: 2019/02/14 17:58:54 by apouchet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra
+.PHONY: all, clean, fclean, re
+
+CC = gcc
+
+CFLAGS = -Weverything -Wall -Werror -Wextra
+# CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
+SRC_ELSE = $(wildcard src/else/*.c)
+SRC_IS = $(wildcard src/is/*.c)
+SRC_MEM = $(wildcard src/mem/*.c)
+SRC_PUT = $(wildcard src/put/*.c)
+SRC_STR = $(wildcard src/str/*.c)
+SRC_LST = $(wildcard src/lst/*.c)
+SRC_PTF = $(wildcard src/ft_printf/*.c)
+SRC_GNL = $(wildcard src/gnl/*.c)
 
-LIB = ./srcs/lib/ft_putnbr.c ./srcs/lib/ft_isascii.c ./srcs/lib/ft_strcpy.c \
-	./srcs/lib/ft_strncpy.c ./srcs/lib/ft_isdigit.c ./srcs/lib/ft_putstr.c \
-	./srcs/lib/ft_strlen.c ./srcs/lib/ft_strdup.c ./srcs/lib/ft_strrchr.c \
-	./srcs/lib/ft_atoi.c ./srcs/lib/ft_isprint.c ./srcs/lib/ft_strcat.c \
-	./srcs/lib/ft_isalnum.c ./srcs/lib/ft_putchar.c ./srcs/lib/ft_strchr.c \
-	./srcs/lib/ft_tolower.c ./srcs/lib/ft_strncat.c ./srcs/lib/ft_toupper.c \
-	./srcs/lib/ft_isalpha.c ./srcs/lib/ft_strcmp.c ./srcs/lib/ft_strncmp.c \
-	./srcs/lib/ft_memmove.c ./srcs/lib/ft_strlcat.c ./srcs/lib/ft_strstr.c \
-	./srcs/lib/ft_memset.c ./srcs/lib/ft_memcpy.c ./srcs/lib/ft_memccpy.c \
-	./srcs/lib/ft_strmapi.c ./srcs/lib/ft_memchr.c ./srcs/lib/ft_strsub.c \
-	./srcs/lib/ft_memcmp.c ./srcs/lib/ft_bzero.c ./srcs/lib/ft_strnstr.c \
-	./srcs/lib/ft_memdel.c ./srcs/lib/ft_strdel.c ./srcs/lib/ft_strclr.c \
-	./srcs/lib/ft_strnew.c ./srcs/lib/ft_strsplit.c ./srcs/lib/ft_putchar_fd.c \
-	./srcs/lib/ft_strjoin.c ./srcs/lib/ft_putstr_fd.c ./srcs/lib/ft_concat_params.c \
-	./srcs/lib/ft_putendl.c ./srcs/lib/ft_putendl_fd.c ./srcs/lib/ft_putnbr_fd.c \
-	./srcs/lib/ft_ultimate_range.c ./srcs/lib/ft_striter.c ./srcs/lib/ft_itoa.c \
-	./srcs/lib/ft_striteri.c ./srcs/lib/ft_strequ.c ./srcs/lib/ft_strnequ.c \
-	./srcs/lib/ft_memalloc.c ./srcs/lib/ft_strtrim.c ./srcs/lib/ft_strmap.c \
-	./srcs/lib/ft_lstnew.c ./srcs/lib/ft_lstdelone.c ./srcs/lib/ft_lstdel.c \
-	./srcs/lib/ft_lstiter.c ./srcs/lib/ft_lstadd.c ./srcs/lib/ft_lstmap.c \
-	./srcs/lib/ft_strupcase.c ./srcs/lib/ft_strlowcase.c ./srcs/lib/ft_strcapitalize.c \
+OBJ_ELSE = $(SRC_ELSE:.c=.o)
+OBJ_IS = $(SRC_IS:.c=.o)
+OBJ_MEM = $(SRC_MEM:.c=.o)
+OBJ_PUT = $(SRC_PUT:.c=.o)
+OBJ_STR = $(SRC_STR:.c=.o)
+OBJ_LST = $(SRC_LST:.c=.o)
+OBJ_PTF = $(SRC_PTF:.c=.o)
+OBJ_GNL = $(SRC_GNL:.c=.o)
 
-PRINT = ./srcs/print/ft_printf.c ./srcs/print/octo.c ./srcs/print/decalage.c \
-	./srcs/print/autre.c ./srcs/print/ft_printf_char.c ./srcs/print/ft_printf_nb.c \
-	./srcs/print/ft_nombre.c
 
-GET = ./srcs/get/get_next_line.c\
+all : $(NAME)
 
-OBJL = $(LIB:.c=.o)
+$(NAME) : $(OBJ_ELSE) $(OBJ_IS) $(OBJ_MEM) $(OBJ_PUT) $(OBJ_STR) $(OBJ_LST) $(OBJ_PTF) $(OBJ_GNL)
+	@echo ""
+	@ar rc $(NAME) $(OBJ_ELSE) $(OBJ_IS) $(OBJ_MEM) $(OBJ_PUT) $(OBJ_STR) $(OBJ_LST) $(OBJ_PTF) $(OBJ_GNL)
+	@ranlib $(NAME)
+	@echo "Creation libft.a"
 
-OBJP = $(PRINT:.c=.o)
-
-OBJG = $(GET:.c=.o)
-
-all: $(NAME) 
-
-$(NAME) : $(OBJL) $(OBJP) $(OBJG)
-	ar rc $(NAME) $(OBJL) $(OBJG) $(OBJP)
-	ranlib libft.a
-
-norm :
-	clear
-	norminette -R CheckForbiddenSourceHeader *.c
+%.o: %.c
+	@$(CC) -o $@ -c $< $(CFLAGS)
+	@printf "\033[1;32m+\033[0m"
 
 clean :
-	rm -f $(OBJL)
-	rm -f $(OBJP)
-	rm -f $(OBJG)
-
-re : fclean all
+	@rm -rf $(OBJ_ELSE)
+	@echo "Clean ft_else"
+	@rm -rf $(OBJ_IS)
+	@echo "Clean ft_is"
+	@rm -rf $(OBJ_MEM)
+	@echo "Clean ft_mem"
+	@rm -rf $(OBJ_PUT)
+	@echo "Clean ft_put"
+	@rm -rf $(OBJ_STR)
+	@echo "Clean ft_str"
+	@rm -rf $(OBJ_LST)
+	@echo "Clean ft_printf"
+	@rm -rf $(OBJ_PTF)
+	@echo "Clean get_next_line"
+	@rm -rf $(OBJ_GNL)
 
 fclean : clean
-	rm -f $(NAME)
+	@echo "Fclean libft"
+	@rm -rf $(NAME)
+
+re : fclean $(NAME)
+

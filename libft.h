@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/07 00:47:46 by apouchet          #+#    #+#             */
-/*   Updated: 2016/11/13 17:23:53 by apouchet         ###   ########.fr       */
+/*   Created: 2018/11/29 15:22:05 by apouchet          #+#    #+#             */
+/*   Updated: 2019/02/14 17:58:25 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-int		ft_isalnum(int c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
-}
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+
+# include "src/ft_printf/src/ft_printf.h"
+# include "src/is/is.h"
+# include "src/else/else.h"
+# include "src/mem/mem.h"
+# include "src/put/put.h"
+# include "src/str/str.h"
+# include "src/lst/lst.h"
+# include "src/gnl/get_next_line.h"
+
+#endif
