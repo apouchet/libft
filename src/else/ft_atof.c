@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:09:26 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/19 16:30:14 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/02/19 16:36:58 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ float	ft_atof(char *s)
 		return (0);
 	while (ft_isdigit(s[i]))
 		i++;
-	return (a + (ft_atoi(s) / (float)ft_pow(10, i)));
+	return (a + (ft_atoi(s) / (float)(ft_pow(10, i))));
 }
