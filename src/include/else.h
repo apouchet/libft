@@ -6,7 +6,7 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 17:56:10 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/19 16:20:42 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/02/19 17:09:33 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ long	ft_atol(const char *str);
 
 size_t	ft_while_not_char(const char *a, size_t i, int c);
 
-int		ft_pow(int x, int y);
+double	ft_pow(double x, double y);
 
 float	ft_atof(char *s);
 

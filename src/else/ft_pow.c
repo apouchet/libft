@@ -6,20 +6,20 @@
 /*   By: apouchet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:09:33 by apouchet          #+#    #+#             */
-/*   Updated: 2019/02/19 16:19:25 by apouchet         ###   ########.fr       */
+/*   Updated: 2019/02/19 17:10:52 by apouchet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "else.h"
 
-int		ft_pow(int x, int y)
+double		ft_pow(double x, double y)
 {
-	int a;
+	double a;
 
 	a = x;
-	if (y == 0)
+	if ((int)y == 0)
 		return (1);
-	if (x == 1 || x == 0 || y == 1)
+	if ((int)x == 1 || (int)x == 0 || (int)y == 1)
 		return (x);
 	while (y > 1)
 	{
